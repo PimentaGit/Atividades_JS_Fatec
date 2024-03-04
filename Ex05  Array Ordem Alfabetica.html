@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05 - Array Ordem Alfabética</title>
+    <!-- 1. Implemente um script com um array cujos elementoes
+        sejam adicionados dinamicamente pelo usuário
+        utilizando-se formulário. A cada nova inserção exiba
+        todos os dados cadastrados em ordem alfabética em
+        uma lista ordenada do html.-->
+</head>
+
+<body>
+    <h2>Elementos adicionados dinamicamente pelo usuário</h2>
+    <form>
+        <label for="elemento">Elemento: </label>
+        <input type="text" id="elemento" name="elemento">
+        <input type="submit" value="Adicionar">
+    </form>
+    <h4>Elementos digitados em ordem alfabética: </h4>
+    <ol id="digitado"> </ol>
+
+    <script>
+        let digitado = [];
+
+        addEventListener('submit', function (evento) {
+            evento.preventDefault();
+
+            let elemento = document.getElementById("elemento").value;
+            digitado.push(elemento);
+            digitado.sort();
+
+            let lista = document.getElementById("digitado");
+            document.getElementById("elemento").value = "";
+            lista.innerHTML = "";
+            for (let i = 0; i < digitado.length; i++) {
+                let item = document.createElement("li");
+                let a = document.createTextNode(digitado[i]);
+                item.appendChild(a);
+                lista.appendChild(item);
+            }
+        })
+    </script>
+    <br><br>
+    <a href="index.html" class="button">Voltar</a>    
+</body>
+</html>

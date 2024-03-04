@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 03 - Alerta Par ou Ímpar</title> <!--Implemente um script JavaScript que solicite
+    ao usuário um número inteiro positivo. Assim que o usuário digitar 
+    um valor válido informe em uma janela
+    de alerta se o número é par ou ímpar. -->
+
+</head>
+
+<body>
+    <script>
+        numero = prompt("Digite um número inteiro e positivo: ", "");
+        if (numero >= 0)
+            if (numero % 2 == 0) {
+                alert("Você digitou: " + numero + "." + " Este número é par!")
+            }
+            else {
+                alert("Você digitou: " + numero + "." + " Este número é impar!  ")
+            }
+        else {
+            alert("O número digitado não corresponde ao que foi solicitado!")
+        }
+        console.log(numero);
+    </script>
+    <br><br>
+    <a href="index.html" class="button">Voltar</a>
+</body>
+
+</html>
