@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06 - Data atual no formato "Extenso"</title>
+    <!-- Implemente um script JavaScript que exiba a data atual no
+        formato: Quarta-feira, 15 de fevereiro de 2023-->
+    <style>
+        body {
+            text-align: center;
+        }
+
+        div.a {
+            font-size: 40px;
+        }
+        div.data{
+            font-size: 50px;
+        }
+        h1{
+            font-size: 50px; 
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Hoje é: </h1>
+    <div class="data">
+        <script>
+            diaSemana = new Array("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
+            mes = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+            let data = new Date();
+            document.write(diaSemana[data.getDay()] + ", " + data.getDate() + " de " + mes[data.getMonth()] + " de " + data.getFullYear())
+
+            date_default_timezone_set(America/Sao_Paulo); //GMT-3
+        document.write("Hoje é dia " + date(d/M/Y));
+        document.write(" e a hora atual é " + date(G+i+s));
+
+        </script>
+        <div class="a">
+            <br><br>
+            <a href="index.html" class="button">Voltar</a>
+        </div>
+    </div>
+</body>
+
+</html>
