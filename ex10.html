@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Pessoas</title>
+  <!-- Implemente uma página HTML contendo APENAS uma div na qual um contador de
+      pessoas similar ao da figura abaixo deve ser gerado por meio de JavaScript, ou seja,
+      todos os elementos do contador devem ser criados e formatados com JavaScript. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body {
+      background-color: lightgray;
+    }
+
+    #contador {
+      font-size: 30px;
+      text-align: center;
+      border: 3px solid black;
+      padding: 60px;
+      margin: 50px auto;
+      width: 300px;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="contador"></div>
+  <script>
+    // Ffunção para o contador 
+    function criarContador() {
+      // Criando elementos HTML Para o contador
+      var divContador = document.createElement("div");
+      var imgHomem = document.createElement("img");
+      var imgMulher = document.createElement("img");
+      var textoHomens = document.createElement("p");
+      var textoMulheres = document.createElement("p");
+      var textoTotal = document.createElement("p");
+      var botaoHomem = document.createElement("button");
+      var botaoMulher = document.createElement("button");
+      var botaoRemoverHomem = document.createElement("button");
+      var botaoRemoverMulher = document.createElement("button");
+      var botaoZerar = document.createElement("button");
+      
+
+      imgHomem.src = "h.jpg";
+      imgMulher.src = "m.jpg";
+
+      // ID e texto para os botões
+      botaoHomem.id = "homem";
+      botaoHomem.textContent = "Adicionar Homem";
+      botaoMulher.id = "mulher";
+      botaoMulher.textContent = "Adicionar Mulher";
+      botaoRemoverHomem.id = "remover-homem";
+      botaoRemoverHomem.textContent = "Remover Homem";
+      botaoRemoverMulher.id = "remover-mulher";
+      botaoRemoverMulher.textContent = "Remover Mulher";
+      botaoZerar.id = "zerar";
+      botaoZerar.textContent = "zerar";
+      botaoZerar.innerHTML = '<i class="fas fa-sync-alt"></i> Zerar';
+
+      // Textos iniciais
+      textoHomens.textContent = "Homens: 0";
+      textoMulheres.textContent = "Mulheres: 0";
+      textoTotal.textContent = "Total: 0";
+
+      // Adicionando os elementos ao div do contador
+      divContador.appendChild(imgHomem);
+      divContador.appendChild(botaoHomem);
+      divContador.appendChild(botaoRemoverHomem);
+      divContador.appendChild(textoHomens);
+      divContador.appendChild(imgMulher);
+      divContador.appendChild(botaoMulher);
+      divContador.appendChild(botaoRemoverMulher);
+      divContador.appendChild(textoMulheres);
+      divContador.appendChild(textoTotal);
+      divContador.appendChild(botaoZerar);
+
+      // Adicionando o div do contador ao documento HTML
+      document.getElementById("contador").appendChild(divContador);
+
+      // Contadores para homens, mulheres e total
+      var contadorHomens = 0;
+      var contadorMulheres = 0;
+      var contadorTotal = 0;
+
+      // Adicionando eventos aos botões para adicionar homens e mulheres
+      botaoHomem.addEventListener("click", function () {
+        contadorHomens++;
+        contadorTotal++;
+        textoHomens.textContent = "Homens: " + contadorHomens;
+        textoTotal.textContent = "Total: " + contadorTotal;
+      });
+
+      botaoMulher.addEventListener("click", function () {
+        contadorMulheres++;
+        contadorTotal++;
+        textoMulheres.textContent = "Mulheres: " + contadorMulheres;
+        textoTotal.textContent = "Total: " + contadorTotal;
+      });
+
+      // Adicionando eventos aos botões para remover homens e mulheres
+      botaoRemoverHomem.addEventListener("click", function () {
+        if (contadorHomens > 0) {
+          contadorHomens--;
+          contadorTotal--;
+          textoHomens.textContent = "Homens: " + contadorHomens;
+          textoTotal.textContent = "Total: " + contadorTotal;
+        }
+      });
+
+      botaoRemoverMulher.addEventListener("click", function () {
+        if (contadorMulheres > 0) {
+          contadorMulheres--;
+          contadorTotal--;
+          textoMulheres.textContent = "Mulheres: " + contadorMulheres;
+          textoTotal.textContent = "Total: " + contadorTotal;
+        }
+      });
+      botaoZerar.addEventListener("click", function () {
+        contadorHomens = 0;
+        contadorMulheres = 0;
+        contadorTotal = 0;
+        textoMulheres.textContent = "Mulheres: " + contadorMulheres;
+        textoHomens.textContent = "Homens: " + contadorHomens;
+        textoTotal.textContent = "Total: " + contadorTotal;
+      }
+      );
+    }
+
+    // Chamando a função criarContador quando a página for carregada
+    window.onload = function () {
+      criarContador();
+    };
+  </script>
+
+</body>
+
+</html>
+
+<div class="a">
+  <br><br>
+  <a href="index.html" class="button">Voltar</a>
+</div>
+</body>
+
+</html>
