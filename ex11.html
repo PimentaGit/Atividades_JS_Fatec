@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: lightgrey;
+        }
+
+        .calculator {
+            width: 250px;
+            border: none;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 50px auto;
+        }
+
+        .button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            background-color: #524f5a;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+            color: #c0cde5;
+        }
+
+        .button.operation {
+            background-color: #ff9500;
+            color: white;
+        }
+
+        .button.ac {
+            background-color: #d4d4d2;
+        }
+
+        #display {
+            width: calc(100% - 20px);
+            height: 50px;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: right;
+            padding: 5px;
+            background-color: #181818;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            box-shadow: inset 0 -4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div id="display"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calculatorDiv = document.querySelector('.calculator');
+
+            // Lista de botões e seus valores
+            const buttons = [
+                ['C', '+/-', '%', '/'],
+                ['7', '8', '9', 'x'],
+                ['4', '5', '6', '-'],
+                ['1', '2', '3', '+'],
+                ['0', '=']
+            ];
+
+            // Criar e adicionar botões
+            buttons.forEach(row => {
+                const buttonRow = document.createElement('div');
+                row.forEach(value => {
+                    const button = document.createElement('button');
+                    button.textContent = value;
+                    button.classList.add('button');
+                    if (['C', '+/-', '%', '/'].includes(value)) {
+                        button.classList.add('operation');
+                    } else if (value === '0') {
+                        button.style.width = '175px'; // Ajuste para o botão '0'
+                    }
+                    button.addEventListener('click', () => {
+                        if (value === '=') {
+                            calcular();
+                        } else if (value === '+/-') {
+                            alterarSinal();
+                        } else if (value === 'C') {
+                            limpar();
+                        } else {
+                            adicionar(value);
+                        }
+                    });
+                    buttonRow.appendChild(button);
+                });
+                calculatorDiv.appendChild(buttonRow);
+            });
+        });
+
+        let expressao = '';
+
+        function adicionar(valor) {
+            if (valor === '/' || valor === 'x') {
+                expressao += valor.replace('x', '*');
+            } else if (valor === '%') {
+                expressao % '/100*';
+            } else {
+                expressao += valor;
+            }
+            document.getElementById('display').textContent = expressao;
+        }
+
+
+        function limpar() {
+            expressao = '';
+            document.getElementById('display').textContent = '';
+        }
+
+        function calcular() {
+            try {
+                const resultado = eval(expressao);
+                document.getElementById('display').textContent = resultado;
+                expressao = resultado.toString();
+            } catch (error) {
+                document.getElementById('display').textContent = 'Erro';
+                expressao = '';
+            }
+        }
+
+        function alterarSinal() {
+            if (expressao.charAt(0) === '-') {
+                expressao = expressao.slice(1);
+            } else {
+                expressao = '-' + expressao;
+            }
+            document.getElementById('display').textContent = expressao;
+        }
+    </script>
+     <div class="a">
+        <br><br>
+        <a href="index.html" class="button">Voltar</a>
+    </div>    
+</body>
+
+</html>
